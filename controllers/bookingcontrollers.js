@@ -4,8 +4,12 @@ const Booking = require("../model/bookingModel");
 exports.getAllBookings = (req, res) => {
   Booking.findAll()
     .then((bookings) => {
-      console.log(bookings);
-      res.send(`Sending all users`);
+      res.status(200).json({
+        status: "sucess",
+        data: {
+          bookings,
+        },
+      });
     })
     .catch((err) => console.log(err.message));
 };

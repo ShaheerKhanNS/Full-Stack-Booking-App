@@ -1,0 +1,35 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title BookingApp
+    link(rel='icon', type='image/x-icon', href='/images/booking.png')
+    link(rel='stylesheet', href='/css/style.css')
+    script(src='https://unpkg.com/axios/dist/axios.min.js')
+    script(defer='', type='module', src='/js/index.js')
+  body
+    h1 BookingApp&#x1F4F1;
+    .form-container
+      form.form
+        label(for='name') Name:
+        input#name(type='text', required='')
+        label(for='email') Email:
+        input#email(type='email', required='')
+        button.btn-submit Submit
+    .table-container
+      table
+        thead
+          tr
+            th Name
+            th Email
+        tbody
+          each booking in bookings
+            tr
+              td=`${booking.name}`
+              td=`${booking.email}`
+              td
+                button.btn-edit(data-set=`${booking.id}`) Edit
+              td
+                button.btn-delete(data-set=`${booking.id}`) Delete
